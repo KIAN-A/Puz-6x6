@@ -6,21 +6,74 @@
     <meta charset="utf-8">
     <title>Binary Puzzle 6x6 v1.02</title>
     <script type='text/javascript'>
+        //  24/7/19 - 6x6 table of text boxes with some initial test values
+        function initialNumbers() {                    // sets the initial problem
+            document.getElementById('A1').value = 1;
+            document.getElementById('A2').value = "";
+            document.getElementById('A3').value = 0;
+            document.getElementById('A4').value = "";
+            document.getElementById('A5').value = 0;
+            document.getElementById('A6').value = 0;
+            document.getElementById('B1').value = "";
+            document.getElementById('B2').value = 1;
+            document.getElementById('B3').value = "";
+            document.getElementById('B4').value = 0;
+            document.getElementById('B5').value = 0;
+            document.getElementById('B6').value = "";
+            document.getElementById('C1').value = "";
+            document.getElementById('C2').value = "";
+            document.getElementById('C3').value = "";
+            document.getElementById('C4').value = "";
+            document.getElementById('C5').value = "";
+            document.getElementById('C6').value = 0;
+            document.getElementById('D1').value = 0;
+            document.getElementById('D2').value = "";
+            document.getElementById('D3').value = "";
+            document.getElementById('D4').value = 1;
+            document.getElementById('D5').value = "";
+            document.getElementById('D6').value = "";
+            document.getElementById('E1').value = 1;
+            document.getElementById('E2').value = 0;
+            document.getElementById('E3').value = "";
+            document.getElementById('E4').value = 1;
+            document.getElementById('E5').value = 1;
+            document.getElementById('E6').value = "";
+            document.getElementById('F1').value = "";
+            document.getElementById('F2').value = 0;
+            document.getElementById('F3').value = "";
+            document.getElementById('F4').value = "";
+            document.getElementById('F5').value = 1;
+            document.getElementById('F6').value = 1;
+        }
+    </script>
     </script>
 </head>
 <body onload="arrView()">
 
-    <form id="input">
+    <form>
         <h1>6x6 Binary Puzzle Game</h1>
         <h2>V1.02: This version will probably not do anything, I have low expectations</h2>
         Return to <a href="index.html">home</a>:
         <br />
-        <table style="width:30%;">
-            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        </table>
+
 
     </form>
+    <table style="width: 100%;">
+        <tr>
+            <td>e</td>
+            <td>r</td>
+            <td>r</td>
+        </tr>
+        <tr>
+            <td>e</td>
+            <td>r</td>
+            <td>r</td>
+        </tr>
+        <tr>
+            <td>r</td>
+            <td>e</td>
+            <td>e</td>
+        </tr>
+    </table>
 </body>
 </html>
