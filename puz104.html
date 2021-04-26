@@ -6,8 +6,12 @@
     <meta charset="utf-8">
     <title>Binary Puzzle 6x6</title>
     <script type='text/javascript'>  
+        var G1 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
+        var G2 = [null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        var G3 = [null, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+
         //  24/7/19 - 6x6 table of text boxes with some initial test values
-        function initialNumbers() {                    // sets the initial problem
+        function LoadGrid(G1) {                    // sets the initial problem
             document.getElementById('A1').value = 1;   // Hard code
             document.getElementById('A2').value = "";  // Hard code
             document.getElementById('A3').value = 0;
@@ -67,7 +71,7 @@
         }
     </style>
 </head>
-<body onload="initialNumbers()">
+<body onload="LoadGrid(G1)">
     <!--  the "initialNumbers" above does the initial load  -->
     <form id="input">
         <h1>v1.04 Binary Puzzle Game (6x6)</h1>
