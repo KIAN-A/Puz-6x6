@@ -16,23 +16,10 @@
             var Col = 6;                        // declare # of columns
             var Grid = [];                      // declare Grid as an array
 
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '1').value = G[i];            // 0*Col
-            }
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '2').value = G[Col + i];      // 1*Col
-            }
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '3').value = G[2 * Col + i];  // 2*Col
-            }
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '4').value = G[3 * Col + i];  // 3*Col
-            }
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '5').value = G[4 * Col + i];  // 4*Col
-            }
-            for (let i = 0; i < Row; i++) {
-                document.getElementById('B' + (i + 1) + '6').value = G[5 * Col + i];  // 5*Col
+            for (let j = 0; j < Row; j++) {
+                for (let i = 0; i < Col; i++) {
+                    document.getElementById('B' + (i + 1) + (j+1)).value = G[j*Col + i];
+                }
             }
 
         }
@@ -62,8 +49,8 @@
 <body onload="loadGrid(G1)">
     <!--  21/4/21 Now loading the variable "G1" which is a 36 element array  -->
     <form id="input">
-        <h1>v1.05 Binary Puzzle Game (6x6)</h1>
-        <h2>v1.05: Re-name the gameboard cells so that columns and rows are numbers. Edit the 6 loops.</h2>
+        <h1>v1.06 Binary Puzzle Game (6x6)</h1>
+        <h2>v1.06: Reworking back-end code to minimise amount of functions  </h2>
         <p>Return to <a href="index.html">home</a>:</p>
         <p>&nbsp;</p>
         <!--  set up the board as a table with a textbox in each cell  -->
