@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>v1.0 Binary Puzzle 6x6</title>
+    <title>v1.07 Binary Puzzle 6x6</title>
     <script type='text/javascript'>  
         //  26/4/21, KIAN-A - Reducing 6 loops to 2
         var G1 = [1, null, 0, null, 0, 0, null, 1, null, 0, 0, null, null, null, null, null, null, 0, 0, null, null, 1, null, null, 1, 0, null, 1, 1, null, null, 0, null, null, 1, 1];
@@ -18,9 +18,13 @@
 
             for (let j = 0; j < Row; j++) {
                 for (let i = 0; i < Col; i++) {
-                    document.getElementById('B' + (i + 1) + (j+1)).value = G[j*Col + i];
+                    GridCol.push(G[j*Col + i]);
                 }
+                Grid.push(GridCol);
+                GridCol = []
             }
+            document.getElementById('arrayView2D').value = Grid;
+            document.getElementById('arrayViewCell').value = Grid[4][3]
 
         }
 
@@ -49,8 +53,8 @@
 <body onload="loadGrid(G1)">
     <!--  21/4/21 Now loading the variable "G1" which is a 36 element array  -->
     <form id="input">
-        <h1>v1.06 Binary Puzzle Game (6x6)</h1>
-        <h2>v1.06: Reworking back-end code to minimise amount of functions  </h2>
+        <h1>v1.07 Binary Puzzle Game (6x6)</h1>
+        <h2>v1.07: Addition of a 2D Array to replace 1D Array</h2>
         <p>Return to <a href="index.html">home</a>:</p>
         <p>&nbsp;</p>
         <!--  set up the board as a table with a textbox in each cell  -->
@@ -142,5 +146,13 @@
         </table>
         <br />
     </form>
+    <p>
+          View of the 2D array:<br />
+        <textarea id="arrayView2D" cols="30" rows="5"></textarea><br />
+        <br />
+        View of 1 element:<br />
+        <textarea id="arrayViewCell" cols="30" rows="2"></textarea>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <img alt="monkey" src="https://i.kym-cdn.com/photos/images/original/002/075/530/541.gif" style="height: 199px; width: 199px"/></p>
 </body>
 </html>
