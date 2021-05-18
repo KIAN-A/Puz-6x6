@@ -2,19 +2,26 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>v1.11 Binary Puzzle 6x6</title>
+    <title>v1.12 Binary Puzzle 6x6</title>
         <style type="text/css">
                 * {
             padding: 0;
             border-collapse: collapse;
-        }
+            
+        } 
+                body{ /*Background and text formatting*/
+                    background-color: burlywood    ;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+            
+        
 
         
         .gameboard {
             width: 40px;
             height: 40px;
             font-size: 30px;
-            color: #0B1AB8;
+            color: #000000;
             vertical-align: middle;
             text-align: center;
             border-collapse: collapse;
@@ -44,9 +51,7 @@
         function loadGrid(G) {                    // load 6x6 test games
 
             var GridCol = []; // array of a row, with indexes as column numbers
-
-
-
+            Grid = [];
             for (let j = 0; j < Row; j++) { //Row loop - like the "y" coordinates
                 for (let i = 0; i < Col; i++) { //Column loop - like the "x" coordinates
                     GridCol.push(G[j * Col + i]); // load the column elements into this temporary array
@@ -54,6 +59,10 @@
                 Grid.push(GridCol);
                 GridCol = [];
             }
+            document.getElementById('arrayView1D').value = Grid; // this works, but it just looks like a 1D array
+            document.getElementById('arrayView2D').value = '[' + Grid[0] + ']\n[' + Grid[1] + ']\n[' + Grid[2] +
+                ']\n[' + Grid[3] + ']\n[' + Grid[4] + ']\n[' + Grid[5] + ']'; // formatting the array Grid as an array of 6 row arrays
+            document.getElementById('arrayViewCell').value = Grid[4][3]; //Row 5, Column 4 - change these so that you can see it works
             DisplayGrid(Grid)
         }
         function DisplayGrid(G2D) {
@@ -62,10 +71,7 @@
                     document.getElementById('B' + (i + 1) + (j + 1)).value = G2D[j][i];
                 }
             }
-            document.getElementById('arrayView1D').value = Grid; // this works, but it just looks like a 1D array
-            document.getElementById('arrayView2D').value = '[' + Grid[0] + ']\n[' + Grid[1] + ']\n[' + Grid[2] +
-                ']\n[' + Grid[3] + ']\n[' + Grid[4] + ']\n[' + Grid[5] + ']'; // formatting the array Grid as an array of 6 row arrays
-            document.getElementById('arrayViewCell').value = Grid[4][3]; //Row 5, Column 4 - change these so that you can see it works
+
 
             for (let j = 0; j < Col; j++) {
                 for (let i = 0; i < Row; i++) {
@@ -73,7 +79,7 @@
                 }
             }
         }
-          
+
 
         function BinaryPuzzleSolver() {  //Code the top level module here
             window.alert('BinaryPuzzleSolver has not been coded yet');
@@ -99,14 +105,14 @@
             document.getElementById('arrayView2D').value = Grid
             DisplayGrid(Grid);
             var Gridsize = 6;
-            for (let Col = 0; Col < Gridsize; Col++) { //0 - 5 does the bottom row
+            for (let Col = 0; Col < Gridsize; Col++) { //0 - 5 does the rightmost column
                 for (let Row = 0; Row < Gridsize - 1; Row++) {
                     if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row + 1][Col]) {
-                        if (Row > 0) { // Is there a space to the left?
-                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]); //Insert to the left
+                        if (Row > 0) { // Is there a space to the top?
+                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]); //Insert to the top
                         }
-                        if (Row < Gridsize - 2) { //Is there a space to the right?
-                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]); //Insert to the right 
+                        if (Row < Gridsize - 2) { //Is there a space to the bottom?
+                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]); //Insert to the bottom 
                         }
                     }
                 }
@@ -114,8 +120,7 @@
             document.getElementById('arrayView2D').value = Grid
             DisplayGrid(Grid);
         }
-        function SolveRowPairs() { // See pseudocode in Q22f for the row part here
-            //window.alert('SolveRowPairs has not been coded yet');
+        function SolveRowPairs() { 
             var Gridsize = 6;
             for (let Row = 0; Row < Gridsize; Row++) { //0 - 5 does the bottom row
                 for (let Col = 0; Col < Gridsize - 1; Col++) {
@@ -133,17 +138,16 @@
             DisplayGrid(Grid);
 
         }
-        function SolveColPairs() { // Similar to solve row pairs
-            //window.alert('SolveColPairs has not been coded yet');
+        function SolveColPairs() { 
             var Gridsize = 6;
-            for (let Col = 0; Col < Gridsize; Col++) { //0 - 5 does the bottom row
+            for (let Col = 0; Col < Gridsize; Col++) { //0 - 5 does the rightmost column
                 for (let Row = 0; Row < Gridsize - 1; Row++) {
                     if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row + 1][Col]) {
-                        if (Row > 0) { // Is there a space to the left?
-                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]); //Insert to the left
+                        if (Row > 0) { // Is there a space to the top?
+                            Grid[Row - 1][Col] = (1 - Grid[Row][Col]); //Insert to the top
                         }
-                        if (Row < Gridsize - 2) { //Is there a space to the right?
-                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]); //Insert to the right 
+                        if (Row < Gridsize - 2) { //Is there a space to the bottom?
+                            Grid[Row + 2][Col] = (1 - Grid[Row][Col]); //Insert to the bottom 
                         }
                     }
                 }
@@ -152,23 +156,45 @@
             DisplayGrid(Grid);
         }
         function SolveNumberTrios() {
-            window.alert('SolveNumberTrios has not been coded yet');
+            var Gridsize = 6;
+            for (let Row = 0; Row < Gridsize; Row++) { //0 - 5 does the bottom row
+                for (let Col = 0; Col < Gridsize - 1; Col++) {
+                    if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row][Col + 2]) {
+                        if (Col < Gridsize - 2) { //Is there a space to the right?
+                            Grid[Row][Col + 1] = (1 - Grid[Row][Col]); //Insert in the middle
+                        }
+                    }
+                }
+            }
+            document.getElementById('arrayView2D').value = Grid
+            DisplayGrid(Grid);
+            var Gridsize = 6;
+            for (let Col = 0; Col < Gridsize; Col++) { //0 - 5 does the rightmost column
+                for (let Row = 0; Row < Gridsize - 1; Row++) {
+                    if (Grid[Row][Col] !== null && Grid[Row][Col] == Grid[Row + 2][Col]) {
+                        if (Row < Gridsize - 2) { //Is there a space in the middle?
+                            Grid[Row + 1][Col] = (1 - Grid[Row][Col]); //Insert in the middle 
+                        }
+                    }
+                }
+            }
+            document.getElementById('arrayView2D').value = Grid
+            DisplayGrid(Grid);
         }
         function CompleteRowsCols() {
             window.alert('CompleteRowsCols has not been coded yet');
+
         }
 
     </script>
 </head>
 <body onload="loadGrid(G01)">
     <form id="input">
-        <h1>Binary Puzzle Game (6x6)</h1>
-        <h2>v1.11: Solve Col Pairs and Pairs</h2>
-        <p>Return to <a href="index.html">home</a>:</p>
-        Choose a game to solve:<br />
         
-        <select id="cboPuzNo" onchange="loadGrid(eval(value))">
-                    <!--<select id="cboPuzNo" onchange="LoadGrid(eval(value))">-->
+        <h1>Binary Puzzle Game (6x6)</h1>
+        <h2>v1.12: Solve Trios and Formatting</h2>
+        <p>Return to <a href="index.html">home</a>:</p>
+        Choose a game to solve:<select id="cboPuzNo" onchange="loadGrid(eval(value))"class="auto-style1" name="D1">
             <!--<select id="cboPuzNo">-->
             <option value="GT">Test 1-36</option>
             <option value='G01'>Example in Q</option>
@@ -184,24 +210,23 @@
             <option value="G11">Game 11</option>
             <option value="G12">Game 12</option>
             <option value="G13">Game 13</option>
-        </select>
-
+        </select><br />
+        
         <br />
-        The buttons here form a test bed similar to the structure chart.
-        <br />
-        Later, we can improve the screen design.<br />
+        Select a method of solving:<br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <input type="button" value="--- Solve repeat ---" onclick="BinaryPuzzleSolver()" />&nbsp;&nbsp;&nbsp;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-        <input type="button" value="--- Solve once ---" onclick="SolvePuzzle()" />&nbsp;&nbsp;<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input onclick="SolveNumberPairs()" type="button" value="Pairs" />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-                <input type="button" value="Trios" onclick="SolveNumberTrios()" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" value="Complete" onclick="CompleteRowsCols()" />
-        <br />
-&nbsp;<input type="button" value="RowPairs" onclick="SolveRowPairs()" />&nbsp; 
-        <input type="button" value="ColPairs" onclick="SolveColPairs()" />&nbsp;
+        <input type="button" value="--- Solve repeat ---" onclick="BinaryPuzzleSolver()" style="width: 200px; margin-left: 0px" />&nbsp;&nbsp;&nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
+        <input type="button" value="--- Solve once ---" onclick="SolvePuzzle()" style="width: 200px" />&nbsp; &nbsp;&nbsp;<br />
+        Select individual solving functions:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<input onclick="SolveNumberPairs()" type="button" value="Pairs" style="width: 100px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                <input type="button" value="Trios" onclick="SolveNumberTrios()" style="width: 100px; margin-left: 0px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Complete" onclick="CompleteRowsCols()" style="width: 100px" /><br />
+&nbsp;<input type="button" value="RowPairs" onclick="SolveRowPairs()" style="height: 30px; width: 100px" /><input type="button" value="ColPairs" onclick="SolveColPairs()" style="height: 30px; width: 100px" />&nbsp; <!--Rowpairs solves pairs of cells on a row, Colpairs does the same for columns -->
+        &nbsp;
 <br />
         
+        <!--  set up the board as a table with a textbox in each cell  -->
         <table class="gameboard">
             <tr>
                 <td>
